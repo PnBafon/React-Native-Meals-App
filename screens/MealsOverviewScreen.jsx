@@ -11,7 +11,9 @@ const MealsOverviewScreen = ({route}) => {
     })
 
     function renderMealItem(itemData){
-        return <MealItem title={itemData.item.title} />
+        const {title, imageUrl, affordability,complexity,duration } = itemData.item
+        const mealItemProps = {title, imageUrl, affordability, complexity, duration}
+        return <MealItem {...mealItemProps}  />
     }
   return (
     <View>
