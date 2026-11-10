@@ -5,7 +5,7 @@ const MealItem = ({ title, imageUrl, duration, complexity, affordability }) => {
   return (
     <View style={styles.mealItem}>
       <Pressable android_ripple={{color: '#ccc'}} style={({pressed})=>pressed && {opacity: 0.25}}>
-        <View>
+        <View style={{borderRadius: 8}}>
           <Image source={{ uri: imageUrl }} style={styles.image} />
           <Text style={styles.title}>{title}</Text>
         </View>
@@ -37,6 +37,8 @@ const styles = StyleSheet.create({
   image: {
     width: "100%",
     height: 200,
+    borderTopRightRadius: 8,
+    borderTopLeftRadius: 8
   },
   title: {
     fontWeight: "bold",
