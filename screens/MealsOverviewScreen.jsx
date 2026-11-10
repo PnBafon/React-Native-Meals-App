@@ -17,7 +17,6 @@ const MealsOverviewScreen = ({route}) => {
     }
   return (
     <View>
-      <Text>Meals Overview Screen - {catId} </Text>
       <FlatList data={displayedMeals} keyExtractor={(item) => item.id} renderItem={renderMealItem} />
     </View>
   )
