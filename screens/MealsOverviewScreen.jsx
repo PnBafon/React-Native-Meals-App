@@ -12,25 +12,30 @@ const MealsOverviewScreen = ({ route, navigation }) => {
   useLayoutEffect(() => {
     const categoryTitle = CATEGORIES.find(
       (category) => category.id === catId,
-    ).title;
+    )?.title;
 
     navigation.setOptions({
       title: categoryTitle,
     });
   }, [catId, navigation]);
 
+  function navigationHandler(mealId) {
+    navigation.navigate("MealDetail", { mealId });
+  }
 
   function renderMealItem(itemData) {
-    const { title, imageUrl, affordability, complexity, duration } =
+    const { title, imageUrl, affordability, complexity, duration, id } =
       itemData.item;
+
     const mealItemProps = {
       title,
       imageUrl,
       affordability,
       complexity,
       duration,
+      id
     };
-    return <MealItem {...mealItemProps} />;
+    return <MealItem {...mealItemProps} onPress={navigationHandler} />;
   }
   return (
     <View>

@@ -1,11 +1,30 @@
-import { Image, Pressable, StyleSheet, Text, View, Platform } from "react-native";
+import {
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+  Platform,
+} from "react-native";
 import React from "react";
 
-const MealItem = ({ title, imageUrl, duration, complexity, affordability }) => {
+const MealItem = ({
+  title,
+  imageUrl,
+  duration,
+  complexity,
+  affordability,
+  id,
+  onPress,
+}) => {
   return (
     <View style={styles.mealItem}>
-      <Pressable android_ripple={{color: '#ccc'}} style={({pressed})=>pressed && {opacity: 0.25}}>
-        <View style={{borderRadius: 8}}>
+      <Pressable
+        android_ripple={{ color: "#ccc" }}
+        style={({ pressed }) => pressed && { opacity: 0.25 }}
+        onPress={()=>onPress(id)}
+      >
+        <View style={{ borderRadius: 8 }}>
           <Image source={{ uri: imageUrl }} style={styles.image} />
           <Text style={styles.title}>{title}</Text>
         </View>
@@ -38,7 +57,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 200,
     borderTopRightRadius: 8,
-    borderTopLeftRadius: 8
+    borderTopLeftRadius: 8,
   },
   title: {
     fontWeight: "bold",
