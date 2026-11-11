@@ -1,6 +1,7 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
 import React from "react";
 import { MEALS } from "../data/dummy-data";
+import List from "../components/List";
 
 const MealDetailScreen = ({ route, navigation }) => {
   const mealId = route.params.mealId;
@@ -15,7 +16,7 @@ const MealDetailScreen = ({ route, navigation }) => {
     ingredients,
   } = meal;
   return (
-    <View>
+    <ScrollView style={{ marginBottom: 24 }}>
       <View style={styles.imageContainer}>
         <Image source={{ uri: imageUrl }} style={styles.image} />
       </View>
@@ -27,20 +28,16 @@ const MealDetailScreen = ({ route, navigation }) => {
         <Text style={styles.detailItem}>{affordability}</Text>
       </View>
 
-      <View>
-        <Text>Ingredients</Text>
-        {ingredients.map((ingredient) => (
-          <Text key={ingredient}>{ingredient}</Text>
-        ))}
+      <View style={styles.subTitleContainer}>
+        <Text style={styles.subTitle}>Ingredients</Text>
       </View>
+      <List data={ingredients} />
 
-      <View>
-        <Text>Steps</Text>
-        {steps.map((step) => (
-          <Text key={step}>{step}</Text>
-        ))}
+      <View style={styles.subTitleContainer}>
+        <Text style={styles.subTitle}>Steps</Text>
       </View>
-    </View>
+      <List data={steps} />
+    </ScrollView>
   );
 };
 
@@ -48,17 +45,17 @@ export default MealDetailScreen;
 
 const styles = StyleSheet.create({
   imageContainer: {
-    height: '35%', 
-    backgroundColor: 'red'
+    height: "35%",
+    backgroundColor: "red",
   },
   image: {
     width: "100%",
-    height: '100%',
+    height: "100%",
     objectFit: "cover",
   },
   title: {
     fontWeight: "bold",
-    fontSize: 18,
+    fontSize: 24,
     color: "white",
     margin: 8,
     textAlign: "center",
@@ -71,5 +68,19 @@ const styles = StyleSheet.create({
   },
   detailItem: {
     marginHorizontal: 4,
+    color: "white",
+  },
+  subTitleContainer: {
+    borderBottomWidth: 2,
+    borderColor: "#f7e99f",
+    marginHorizontal: 24,
+    marginVertical: 8,
+    padding: 6,
+  },
+  subTitle: {
+    color: "#f7e99f",
+    fontSize: 18,
+    fontWeight: "bold",
+    textAlign: "center",
   },
 });
