@@ -1,7 +1,8 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
 
 const FavoriteScreen = () => {
+  const favoriteCtx = useContext()
   return (
     <View>
       <Text>Favorite Screen</Text>

@@ -11,11 +11,13 @@ function FavoriteContextProvider({ children }) {
 
   function addFavorite(id) {
     setFavoriteMealIds((currentFavIds) => [...currentFavIds, id]);
+    console.log('added it to the favorite container')
   }
   function removeFavorite(id) {
     setFavoriteMealIds((currentFavIds) =>
       currentFavIds.filter((favId) => favId !== id),
     );
+    console.log(favoriteMealIds)
   }
 
   const value = {
